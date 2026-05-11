@@ -28,7 +28,7 @@ function App() {
   if(isCheckingAuth || showSpinner) {
     return (
       <div
-        className="min-h-screen flex items-center justify-center"
+        className="min-h-screen flex flex-col items-center justify-center"
         style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' }}
       >
         <div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
@@ -38,10 +38,9 @@ function App() {
 
   return (
     <div
-      className="min-h-screen flex items-start sm:items-center justify-center relative overflow-hidden px-4 py-8 sm:py-0"
+      className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-6 sm:py-8"
       style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' }}
     >
-
       <div
         className="absolute inset-0 opacity-50 pointer-events-none"
         style={{
@@ -55,31 +54,29 @@ function App() {
       <FloatingShape color="bg-violet-600 shadow-2xl shadow-violet-500/40" size="w-32 h-32" top="40%" left="-10%" delay={2} />
       <FloatingShape color="bg-purple-500 shadow-2xl shadow-purple-400/40" size="w-32 h-32" top="30%" left="60%" delay={5} />
 
-      <div className="w-full z-10">
-        <Routes>
-          <Route path="/" element={
-            isAuthenticated && user?.isVerified
-              ? user?.role === "admin"
-                ? <Navigate to={"/admin"} />
-                : <HomePage />
-            : <Navigate to="/login" />
-          } />
+      <Routes>
+        <Route path="/" element={
+          isAuthenticated && user?.isVerified
+            ? user?.role === "admin"
+              ? <Navigate to={"/admin"} />
+              : <HomePage />
+          : <Navigate to="/login" />
+        } />
 
-          <Route path="/admin" element={
-            isAuthenticated && user?.isVerified && user?.role === "admin" 
-            ? <AdminPage />
-            : <Navigate to={"/"} />
-          } />
+        <Route path="/admin" element={
+          isAuthenticated && user?.isVerified && user?.role === "admin" 
+          ? <AdminPage />
+          : <Navigate to={"/"} />
+        } />
 
-          <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
-          <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
-          <Route path="/verify-email" element={<EmailVerificationPage />} />
-          <Route path="/forget-password" element={<ForgetPasswordPage />} />
-          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-          
-          <Route path="*" element={<Navigate to={'/'} replace/>} />
-        </Routes>
-      </div>
+        <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
+        <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
+        <Route path="/verify-email" element={<EmailVerificationPage />} />
+        <Route path="/forget-password" element={<ForgetPasswordPage />} />
+        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+        
+        <Route path="*" element={<Navigate to={'/'} replace/>} />
+      </Routes>
     </div>
   )
 }

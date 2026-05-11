@@ -65,7 +65,7 @@ const EmailVerificationPage = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-md mx-auto'
+            className='my-auto backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-md mx-auto'
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
             <h2 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">

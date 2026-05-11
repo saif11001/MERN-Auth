@@ -29,7 +29,7 @@ const Login = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='max-w-md w-full mx-auto backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl overflow-hidden'
+            className='max-w-md w-full mx-auto my-auto backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl overflow-hidden'
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
             <div className="p-6 sm:p-8">
