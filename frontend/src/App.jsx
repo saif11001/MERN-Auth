@@ -50,10 +50,10 @@ function App() {
         }}
       />
 
-      {/* <FloatingShape color="bg-purple-600 shadow-2xl shadow-purple-500/40" size="w-64 h-64" top="-5%" left="10%" delay={1} />
+      <FloatingShape color="bg-purple-600 shadow-2xl shadow-purple-500/40" size="w-64 h-64" top="-5%" left="10%" delay={1} />
       <FloatingShape color="bg-indigo-600 shadow-2xl shadow-indigo-500/40" size="w-48 h-48" top="70%" left="80%" delay={4} />
       <FloatingShape color="bg-violet-600 shadow-2xl shadow-violet-500/40" size="w-32 h-32" top="40%" left="-10%" delay={2} />
-      <FloatingShape color="bg-purple-500 shadow-2xl shadow-purple-400/40" size="w-32 h-32" top="30%" left="60%" delay={5} /> */}
+      <FloatingShape color="bg-purple-500 shadow-2xl shadow-purple-400/40" size="w-32 h-32" top="30%" left="60%" delay={5} />
       
       <Routes>
         <Route path="/" element={
@@ -75,6 +75,8 @@ function App() {
         <Route path="/verify-email" element={<EmailVerificationPage />} />
         <Route path="/forget-password" element={<ForgetPasswordPage />} />
         <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+        
+        <Route path="*" element={<Navigate to={'/'} replace/>} />
       </Routes>
     </div>
   )
