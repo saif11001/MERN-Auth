@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-start sm:items-center justify-center relative overflow-hidden px-4 py-8 sm:py-0"
       style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' }}
     >
 
@@ -54,30 +54,32 @@ function App() {
       <FloatingShape color="bg-indigo-600 shadow-2xl shadow-indigo-500/40" size="w-48 h-48" top="70%" left="80%" delay={4} />
       <FloatingShape color="bg-violet-600 shadow-2xl shadow-violet-500/40" size="w-32 h-32" top="40%" left="-10%" delay={2} />
       <FloatingShape color="bg-purple-500 shadow-2xl shadow-purple-400/40" size="w-32 h-32" top="30%" left="60%" delay={5} />
-      
-      <Routes>
-        <Route path="/" element={
-          isAuthenticated && user?.isVerified
-            ? user?.role === "admin"
-              ? <Navigate to={"/admin"} />
-              : <HomePage />
-          : <Navigate to="/login" />
-        } />
 
-        <Route path="/admin" element={
-          isAuthenticated && user?.isVerified && user?.role === "admin" 
-          ? <AdminPage />
-          : <Navigate to={"/"} />
-        } />
+      <div className="w-full z-10">
+        <Routes>
+          <Route path="/" element={
+            isAuthenticated && user?.isVerified
+              ? user?.role === "admin"
+                ? <Navigate to={"/admin"} />
+                : <HomePage />
+            : <Navigate to="/login" />
+          } />
 
-        <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
-        <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
-        <Route path="/verify-email" element={<EmailVerificationPage />} />
-        <Route path="/forget-password" element={<ForgetPasswordPage />} />
-        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-        
-        <Route path="*" element={<Navigate to={'/'} replace/>} />
-      </Routes>
+          <Route path="/admin" element={
+            isAuthenticated && user?.isVerified && user?.role === "admin" 
+            ? <AdminPage />
+            : <Navigate to={"/"} />
+          } />
+
+          <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
+          <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
+          <Route path="/verify-email" element={<EmailVerificationPage />} />
+          <Route path="/forget-password" element={<ForgetPasswordPage />} />
+          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+          
+          <Route path="*" element={<Navigate to={'/'} replace/>} />
+        </Routes>
+      </div>
     </div>
   )
 }

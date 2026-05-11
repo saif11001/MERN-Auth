@@ -33,11 +33,11 @@ const SignUpPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='max-w-md w-full backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl overflow-hidden'
+            className='max-w-md w-full mx-auto backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl overflow-hidden'
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
-            <div className='p-8'>
-                <h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
+            <div className='p-6 sm:p-8'>
+                <h2 className='text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
                     Create Account
                 </h2>
                 <form onSubmit={handleSignUp}>
@@ -48,11 +48,11 @@ const SignUpPage = () => {
                     <PasswordStrengthMeter password={password} />
 
                     {error && (
-                        <p className="text-red-400 font-semibold mt-2">{error}</p>
+                        <p className="text-red-400 font-semibold mt-2 text-sm">{error}</p>
                     )}
 
                     <motion.button
-                        className='mt-5 w-full py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-200'
+                        className='mt-5 w-full py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-200 text-sm sm:text-base'
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         type="submit"
@@ -63,7 +63,7 @@ const SignUpPage = () => {
                 </form>
             </div>
 
-            <div className='px-8 py-4 flex justify-center border-t border-white/10'
+            <div className='px-6 sm:px-8 py-4 flex justify-center border-t border-white/10'
                 style={{ background: 'rgba(255,255,255,0.03)' }}
             >
                 <p className='text-sm text-gray-400'>

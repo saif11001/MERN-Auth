@@ -28,32 +28,32 @@ const ForgetPasswordPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='max-w-md w-full backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl overflow-hidden'
+            className='max-w-md w-full mx-auto backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl overflow-hidden'
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
-            <div className="p-8">
-                <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+            <div className="p-6 sm:p-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
                     Forgot Password
                 </h2>
 
                 {submitted ? (
                     <div className="text-center">
-                        <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-4"
                             style={{ background: 'rgba(167,139,250,0.15)' }}
                         >
-                            <Mail className="w-8 h-8 text-purple-400" />
+                            <Mail className="w-7 h-7 sm:w-8 sm:h-8 text-purple-400" />
                         </div>
-                        <p className="text-gray-300 mb-6">
-                            If an account exists for <span className="text-purple-400 font-bold">{email}</span>, you will receive a password reset link shortly.
+                        <p className="text-gray-300 mb-6 text-sm sm:text-base">
+                            If an account exists for <span className="text-purple-400 font-bold break-all">{email}</span>, you will receive a password reset link shortly.
                         </p>
-                        <Link to="/login" className="text-purple-400 hover:underline flex items-center justify-center gap-2">
+                        <Link to="/login" className="text-purple-400 hover:underline flex items-center justify-center gap-2 text-sm">
                             <ArrowLeft className="w-4 h-4" />
                             Back to Login
                         </Link>
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit}>
-                        <p className="text-gray-400 mb-6 text-center">
+                        <p className="text-gray-400 mb-5 sm:mb-6 text-center text-sm sm:text-base">
                             Enter your email and we'll send you a reset link.
                         </p>
 
@@ -66,13 +66,13 @@ const ForgetPasswordPage = () => {
                         />
 
                         {error && (
-                            <p className="text-red-400 font-semibold mb-4">{error}</p>
+                            <p className="text-red-400 font-semibold mb-4 text-sm">{error}</p>
                         )}
 
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className='w-full py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-200'
+                            className='w-full py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-200 text-sm sm:text-base'
                             type="submit"
                             disabled={isLoading}
                         >
@@ -83,7 +83,7 @@ const ForgetPasswordPage = () => {
             </div>
 
             {!submitted && (
-                <div className='px-8 py-4 flex justify-center border-t border-white/10'
+                <div className='px-6 sm:px-8 py-4 flex justify-center border-t border-white/10'
                     style={{ background: 'rgba(255,255,255,0.03)' }}
                 >
                     <Link to="/login" className='text-sm text-purple-400 hover:underline flex items-center gap-2'>

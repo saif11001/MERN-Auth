@@ -65,15 +65,15 @@ const EmailVerificationPage = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 w-full max-w-md'
+            className='backdrop-filter backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-md mx-auto'
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
-            <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
                 Verify Your E-mail
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="flex justify-between gap-2">
+                <div className="flex justify-between gap-1 sm:gap-2">
                     {code.map((digit, index) => (
                         <input
                             key={index}
@@ -83,7 +83,7 @@ const EmailVerificationPage = () => {
                             value={digit}
                             onChange={(e) => { handleChange(index, e.target.value) }}
                             onKeyDown={(e) => { handleKeyDown(index, e) }}
-                            className="w-12 h-12 text-center text-2xl font-bold text-white rounded-xl outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50"
+                            className="w-10 h-10 sm:w-12 sm:h-12 text-center text-xl sm:text-2xl font-bold text-white rounded-xl outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50"
                             style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
                         />
                     ))}
@@ -96,7 +96,7 @@ const EmailVerificationPage = () => {
                 <motion.button 
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className='w-full py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 disabled:opacity-50 transition duration-200'
+                    className='w-full py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 disabled:opacity-50 transition duration-200 text-sm sm:text-base'
                     type="submit"
                 >
                     {isLoading ? <Loader className="w-6 h-6 animate-spin mx-auto" /> : "Verify Email"}

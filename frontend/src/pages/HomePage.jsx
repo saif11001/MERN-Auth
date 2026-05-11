@@ -63,10 +63,10 @@ const HomePage = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
-                className='max-w-md w-full mx-auto mt-10 p-8 backdrop-filter backdrop-blur-lg rounded-2xl shadow-2xl border border-white/10'
+                className='max-w-md w-full mx-auto mt-4 sm:mt-10 p-5 sm:p-8 backdrop-filter backdrop-blur-lg rounded-2xl shadow-2xl border border-white/10'
                 style={{ background: 'rgba(255,255,255,0.05)' }}
             >
-                <h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
+                <h2 className='text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
                     Welcome, {user?.name?.split(" ")[0]}
                 </h2>
 
@@ -78,9 +78,9 @@ const HomePage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                     >
-                        <h3 className='text-xl font-semibold text-purple-400 mb-3'>Profile Information</h3>
-                        <p className='text-gray-300'>Name: {user?.name}</p>
-                        <p className='text-gray-300'>Email: {user?.email}</p>
+                        <h3 className='text-base sm:text-xl font-semibold text-purple-400 mb-3'>Profile Information</h3>
+                        <p className='text-gray-300 text-sm sm:text-base break-all'>Name: {user?.name}</p>
+                        <p className='text-gray-300 text-sm sm:text-base break-all'>Email: {user?.email}</p>
                     </motion.div>
 
                     <motion.div
@@ -90,14 +90,14 @@ const HomePage = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                     >
-                        <h3 className='text-xl font-semibold text-purple-400 mb-3'>Account Activity</h3>
-                        <p className='text-gray-300'>
+                        <h3 className='text-base sm:text-xl font-semibold text-purple-400 mb-3'>Account Activity</h3>
+                        <p className='text-gray-300 text-sm sm:text-base'>
                             <span className='font-bold'>Joined: </span>
                             {new Date(user?.createdAt).toLocaleDateString("en-US", {
                                 year: "numeric", month: "long", day: "numeric",
                             })}
                         </p>
-                        <p className='text-gray-300'>
+                        <p className='text-gray-300 text-sm sm:text-base'>
                             <span className='font-bold'>Last Login: </span>
                             {user?.lastLogin ? formatDate(user.lastLogin) : "You just signed up!"}
                         </p>
@@ -108,24 +108,24 @@ const HomePage = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className='mt-6 flex flex-col gap-3'
+                    className='mt-5 sm:mt-6 flex flex-col gap-3'
                 >
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={openEdit}
-                        className='w-full flex items-center justify-center gap-2 py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-200'
+                        className='w-full flex items-center justify-center gap-2 py-3 px-4 bg-white text-gray-900 font-bold rounded-full shadow-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition duration-200 text-sm sm:text-base'
                     >
                         <Pencil className="w-4 h-4" />
                         Edit Profile
                     </motion.button>
 
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={handleLogout}
-                            className='flex-1 py-3 px-4 font-bold rounded-full border border-white/15 text-white hover:bg-white/10 transition duration-200'
+                            className='flex-1 py-3 px-4 font-bold rounded-full border border-white/15 text-white hover:bg-white/10 transition duration-200 text-sm sm:text-base'
                         >
                             Logout
                         </motion.button>
@@ -134,7 +134,7 @@ const HomePage = () => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={handleDelete}
-                            className='flex-1 flex items-center justify-center gap-2 py-3 px-4 border border-white/15 text-purple-600 font-bold rounded-full hover:bg-white/10 transition duration-200'
+                            className='flex-1 flex items-center justify-center gap-2 py-3 px-4 border border-white/15 text-purple-400 font-bold rounded-full hover:bg-white/10 transition duration-200 text-sm sm:text-base'
                         >
                             <Trash2 className="w-4 h-4" />
                             Delete Account
@@ -157,17 +157,14 @@ const HomePage = () => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             transition={{ duration: 0.3 }}
-                            className="w-full max-w-md border border-white/10 rounded-2xl shadow-2xl p-8"
+                            className="w-full max-w-md border border-white/10 rounded-2xl shadow-2xl p-5 sm:p-8"
                             style={{ background: 'rgba(15,20,60,0.95)' }}
                         >
-                            <div className="flex justify-between items-center mb-6">
-                                <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+                            <div className="flex justify-between items-center mb-5 sm:mb-6">
+                                <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
                                     Edit Profile
                                 </h3>
-                                <button
-                                    onClick={() => setShowEditModal(false)}
-                                    className="text-gray-400 hover:text-white transition"
-                                >
+                                <button onClick={() => setShowEditModal(false)} className="text-gray-400 hover:text-white transition">
                                     <X className="w-5 h-5" />
                                 </button>
                             </div>
@@ -179,7 +176,7 @@ const HomePage = () => {
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50"
+                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-sm"
                                         style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
                                     />
                                 </div>
@@ -190,7 +187,7 @@ const HomePage = () => {
                                         type="email"
                                         value={form.email}
                                         onChange={(e) => setForm({ ...form, email: e.target.value })}
-                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50"
+                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-sm"
                                         style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
                                     />
                                 </div>
@@ -205,7 +202,7 @@ const HomePage = () => {
                                             value={form.password}
                                             placeholder="••••••••"
                                             onChange={(e) => setForm({ ...form, password: e.target.value })}
-                                            className="w-full px-4 py-2 pr-10 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50"
+                                            className="w-full px-4 py-2 pr-10 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-sm"
                                             style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
                                         />
                                         <button
@@ -226,7 +223,7 @@ const HomePage = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowEditModal(false)}
-                                        className="flex-1 py-2 px-4 border border-white/15 text-white font-bold rounded-full hover:bg-white/10 transition duration-200"
+                                        className="flex-1 py-2 px-4 border border-white/15 text-white font-bold rounded-full hover:bg-white/10 transition duration-200 text-sm"
                                     >
                                         Cancel
                                     </button>
@@ -235,7 +232,7 @@ const HomePage = () => {
                                         whileTap={{ scale: 0.98 }}
                                         type="submit"
                                         disabled={isLoading}
-                                        className="flex-1 py-2 px-4 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition duration-200 disabled:opacity-50"
+                                        className="flex-1 py-2 px-4 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition duration-200 disabled:opacity-50 text-sm"
                                     >
                                         {isLoading ? <Loader className="w-5 h-5 animate-spin mx-auto" /> : "Save Changes"}
                                     </motion.button>
