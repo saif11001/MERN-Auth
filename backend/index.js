@@ -18,7 +18,13 @@ const app = express();
 const port = process.env.PORT || 5000;
 const _dirname = path.resolve();
 
-app.use(cors({origin: process.env.CLINT_URL, credentials: true }));
+app.use(cors({
+    origin: [
+        process.env.CLINT_URL,
+        "https://mern-auth-frontend-swart.vercel.app"
+    ], 
+    credentials: true 
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
