@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import helmet from 'helmet';
+import path from 'path';
 
 import { connectDB } from './db/connectDB.js';
 import authRouter from './routers/auth.route.js';
@@ -12,9 +13,12 @@ import { generalLimiter } from './middlewares/rateLimiter.js';
 
 dotenv.config();
 
-const app = express();
 
-app.use(cors({ origin: process.env.CLINT_URL, credentials: true }));
+const app = express();
+const port = process.env.PORT || 5000;
+const _dirname = path.resolve();
+
+app.use(cors({origin: process.env.CLINT_URL, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
@@ -24,6 +28,15 @@ app.use('/api/v1/auth/', authRouter);
 app.use('/api/v1/admin/', adminRouter);
 app.use('/api/v1/user/', userRouter);
 
-connectDB();
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(_dirname, "/frontend/dist")));
 
-export default app;
+    app.get("{*path}", (req, res, next) => {
+        res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
+    })
+}
+
+app.listen(port, () => {
+    connectDB();
+    console.log(`server is running in port: ${port}`);
+})
