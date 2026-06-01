@@ -19,12 +19,11 @@
       "dest": "backend/index.js"
     },
     {
-      "src": "^/(assets|favicon\\.ico)(.*)",
-      "dest": "frontend/dist/$1$2"
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/dist/index.html"
+      "dest": "/frontend/index.html"
     }
   ]
 }
