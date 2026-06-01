@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const signup = createAsyncThunk('auth/signup',
     async (formData, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/auth/signup", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -24,7 +24,7 @@ export const signup = createAsyncThunk('auth/signup',
 export const verifyEmail = createAsyncThunk('auth/verifyEmail',
     async (code, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/auth/verify-email", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/verify-email`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -48,7 +48,7 @@ export const verifyEmail = createAsyncThunk('auth/verifyEmail',
 export const login = createAsyncThunk('auth/login', 
     async ({email, password}, thunkAPI) => {
         try {            
-            const res = await fetch("/api/v1/auth/login", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -71,7 +71,7 @@ export const login = createAsyncThunk('auth/login',
 export const checkAuth = createAsyncThunk('auth/checkAuth', 
     async (_, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/auth/check-auth", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/check-auth`, {
                 method: "GET",
                 credentials: "include",
             })
@@ -91,7 +91,7 @@ export const checkAuth = createAsyncThunk('auth/checkAuth',
 export const logout = createAsyncThunk('auth/logout',
     async (_, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/auth/logout", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/logout`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -112,7 +112,7 @@ export const logout = createAsyncThunk('auth/logout',
 export const forgetPassword = createAsyncThunk('auth/forgetPassword', 
     async (email, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/auth/forget-password", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/forget-password`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -135,7 +135,7 @@ export const forgetPassword = createAsyncThunk('auth/forgetPassword',
 export const resetPassword = createAsyncThunk('auth/resetPassword', 
     async ({ token, password }, thunkAPI ) => {
         try {
-            const res = await fetch(`/api/v1/auth/reset-password/${token}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/reset-password/${token}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -158,7 +158,7 @@ export const resetPassword = createAsyncThunk('auth/resetPassword',
 export const getAllUsers = createAsyncThunk('admin/getAllUsers', 
     async (_, thunkAPI) => {
         try {            
-            const res = await fetch("/api/v1/admin/users", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/users`, {
                 method: "GET",
                 credentials: "include",
             });
@@ -179,7 +179,7 @@ export const getAllUsers = createAsyncThunk('admin/getAllUsers',
 export const deleteUserByAdmin = createAsyncThunk('admin/deleteUser',
     async (userId, thunkAPI) => {
         try {
-            const res = await fetch(`/api/v1/admin/user/${userId}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/user/${userId}`, {
                 method: "DELETE",
                 credentials: "include"
             });
@@ -200,7 +200,7 @@ export const deleteUserByAdmin = createAsyncThunk('admin/deleteUser',
 export const deleteAllUsers = createAsyncThunk('admin/deleteAllUsers',
     async (_, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/admin/users", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/users`, {
                 method: "DELETE",
                 credentials: "include"
             })
@@ -221,7 +221,7 @@ export const deleteAllUsers = createAsyncThunk('admin/deleteAllUsers',
 export const editUser = createAsyncThunk('user/edit', 
     async (updates, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/user/", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/user/`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -244,7 +244,7 @@ export const editUser = createAsyncThunk('user/edit',
 export const deleteUser = createAsyncThunk('user/delete',
     async (_, thunkAPI) => {
         try {
-            const res = await fetch("/api/v1/user/", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/user/`, {
                 method: "DELETE",
                 credentials: "include",
             })
