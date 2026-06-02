@@ -3,31 +3,24 @@
   "version": "1.0.0",
   "main": "./backend/index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon backend/index.js",
-    "start": "cross-env NODE_ENV=production node backend/index.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "start": "node backend/index.js",
+    "build": "npm install && npm install --prefix frontend --include=dev && npm run build --prefix frontend"
   },
-  "keywords": [],
-  "author": "",
   "type": "module",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
-    "cors": "^2.8.6",
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.5.1",
-    "express-validator": "^7.3.2",
-    "helmet": "^8.1.0",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^8.23.0",
-    "nodemailer": "^8.0.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "nodemailer": "^6.9.16",
     "cross-env": "^7.0.3"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
   }
 }
