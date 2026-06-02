@@ -1,7 +1,6 @@
 # Dependencies
 node_modules/
-dist
-dist-ssr
+
 *.local
 frontend/node_modules/
 
@@ -12,9 +11,6 @@ frontend/node_modules/
 .env.production
 
 # Build output
-dist/
-build/
-frontend/dist/
 
 # Logs
 logs/
