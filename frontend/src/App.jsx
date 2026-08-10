@@ -56,11 +56,11 @@ function App() {
 
       <Routes>
         <Route path="/" element={
-          isAuthenticated && user?.isVerified
-            ? user?.role === "admin"
-              ? <Navigate to={"/admin"} />
-              : <HomePage />
-          : <Navigate to="/login" />
+          isAuthenticated
+            ? user?.isVerified
+              ? (user?.role === "admin" ? <Navigate to={"/admin"} /> : <HomePage />)
+              : <Navigate to="/verify-email" />
+            : <Navigate to="/login" />
         } />
 
         <Route path="/admin" element={
@@ -70,8 +70,21 @@ function App() {
         } />
 
         <Route path="/signup" element={!isAuthenticated ? <SignUpPage /> : <Navigate to="/" />} />
-        <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/" />} />
-        <Route path="/verify-email" element={<EmailVerificationPage />} />
+
+        <Route path="/login" element={
+          !isAuthenticated
+            ? <LoginPage />
+            : user?.isVerified
+              ? <Navigate to="/" />
+              : <Navigate to="/verify-email" />
+        } />
+
+        <Route path="/verify-email" element={
+          isAuthenticated
+            ? (user?.isVerified ? <Navigate to="/" /> : <EmailVerificationPage />)
+            : <Navigate to="/login" />
+        } />
+
         <Route path="/forget-password" element={<ForgetPasswordPage />} />
         <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         

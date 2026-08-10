@@ -23,7 +23,7 @@ app.use(cors({
         process.env.CLINT_URL,
         "https://mern-auth-frontend-swart.vercel.app",
         "http://localhost:5173"
-    ], 
+    ],
     credentials: true 
 }));
 app.use(express.json());

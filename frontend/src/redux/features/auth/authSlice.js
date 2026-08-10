@@ -47,6 +47,27 @@ export const verifyEmail = createAsyncThunk('auth/verifyEmail',
     }
 )
 
+export const resendVerification = createAsyncThunk('auth/resendVerification',
+    async (_, thunkAPI) => {
+        try {
+            const res = await fetch(`${API_URL}/api/v1/auth/resend-verification`, {
+                method: "POST",
+                credentials: "include",
+            });
+
+            const data = await res.json();
+
+            if(!res.ok) {
+                return thunkAPI.rejectWithValue(data.message);
+            }
+
+            return data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+)
+
 export const login = createAsyncThunk('auth/login', 
     async ({email, password}, thunkAPI) => {
         try {            
@@ -271,6 +292,8 @@ const initialState = {
   isAuthenticated: false,
   isLoading: false,
   isCheckingAuth: true,
+  isResending: false,
+  resendMessage: null,
   error: null,
 };
 
@@ -310,6 +333,21 @@ const authSlice = createSlice({
             .addCase(verifyEmail.rejected, (state, action) => {
                 state.isLoading = false,
                 state.error = action.payload 
+            })
+        
+        builder
+            .addCase(resendVerification.pending, (state) => {
+                state.isResending = true;
+                state.resendMessage = null;
+                state.error = null;
+            })
+            .addCase(resendVerification.fulfilled, (state, action) => {
+                state.isResending = false;
+                state.resendMessage = action.payload.message;
+            })
+            .addCase(resendVerification.rejected, (state, action) => {
+                state.isResending = false;
+                state.error = action.payload;
             })
         
         builder
