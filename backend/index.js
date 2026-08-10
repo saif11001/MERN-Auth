@@ -21,7 +21,8 @@ const _dirname = path.resolve();
 app.use(cors({
     origin: [
         process.env.CLINT_URL,
-        "https://mern-auth-frontend-swart.vercel.app"
+        "https://mern-auth-frontend-swart.vercel.app",
+        "http://localhost:5173"
     ], 
     credentials: true 
 }));

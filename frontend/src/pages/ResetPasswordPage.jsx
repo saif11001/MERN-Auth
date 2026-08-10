@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Lock, Loader } from "lucide-react";
 
 import Input from "../components/Input";
-import { resetPassword } from "../redux/features/auth/authSlice";
+import { resetPassword, clearError } from "../redux/features/auth/authSlice";
 
 const ResetPasswordPage = () => {
     const [password, setPassword] = useState('');
@@ -18,6 +18,10 @@ const ResetPasswordPage = () => {
     const { token } = useParams();
 
     const { isLoading, error } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        dispatch(clearError());
+    }, [dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,7 +48,7 @@ const ResetPasswordPage = () => {
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
             <div className="p-6 sm:p-8">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-linear-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
                     Reset Password
                 </h2>
 

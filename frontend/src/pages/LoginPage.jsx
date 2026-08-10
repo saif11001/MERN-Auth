@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Lock, Mail, Loader } from "lucide-react";
 
 import Input from "../components/Input";
-import { login } from '../redux/features/auth/authSlice';
+import { login, clearError } from '../redux/features/auth/authSlice';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -15,6 +15,10 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { isLoading, error } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        dispatch(clearError());
+    }, [dispatch]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -33,7 +37,7 @@ const Login = () => {
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
             <div className="p-6 sm:p-8">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-linear-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
                     Welcome Back
                 </h2>
                 <form onSubmit={handleLogin}>

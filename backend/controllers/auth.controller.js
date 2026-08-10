@@ -39,7 +39,7 @@ export const signup = async (req, res, next) => {
         });
 
         res.status(201).json({ 
-            Success: true,
+            success: true,
             message: 'User created successfuly',
             user: {
                 ...user._doc,
@@ -106,7 +106,7 @@ export const login = async (req, res, next) => {
         await user.save();
 
         res.status(200).json({
-            SUCCESS: true,
+            success: true,
             message: "Logged in successfuly",
             user: {
                 ...user._doc,

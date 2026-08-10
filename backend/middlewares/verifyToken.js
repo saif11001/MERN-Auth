@@ -22,6 +22,6 @@ export const verifyToken = async(req, res, next) => {
         
         next();
     } catch (error) {
-        return res.status(500).json({ success: false, message: error.message });
+        return res.status(401).json({ success: false, message: "Session expired, please log in again" });
     }
 }

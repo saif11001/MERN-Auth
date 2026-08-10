@@ -231,7 +231,7 @@ export const editUser = createAsyncThunk('user/edit',
             const data = await res.json();
             
             if(!res.ok) {
-                return thunkAPI.rejectWithValue(data.error);
+                return thunkAPI.rejectWithValue(data.message);
             }
 
             return data;

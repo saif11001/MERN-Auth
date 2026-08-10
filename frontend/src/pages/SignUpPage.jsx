@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { User, Mail, Lock, Loader } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Input from '../components/Input';
 import PasswordStrengthMeter from '../components/PasswordStrengthMeter';
 
-import { signup } from "../redux/features/auth/authSlice";
+import { signup, clearError } from "../redux/features/auth/authSlice";
 
 const SignUpPage = () => {
     const [name, setName] = useState('');
@@ -19,6 +19,10 @@ const SignUpPage = () => {
     const navigate = useNavigate();
 
     const { isLoading, error } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        dispatch(clearError());
+    }, [dispatch]);
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -37,7 +41,7 @@ const SignUpPage = () => {
             style={{ background: 'rgba(255,255,255,0.05)' }}
         >
             <div className='p-6 sm:p-8'>
-                <h2 className='text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
+                <h2 className='text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-linear-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
                     Create Account
                 </h2>
                 <form onSubmit={handleSignUp}>
