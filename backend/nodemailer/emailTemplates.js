@@ -4,11 +4,11 @@
 const base = {
   body: `margin:0;padding:0;background:#0f0a1e;font-family:Arial,sans-serif;`,
   wrapper: `width:100%;background:#0f0a1e;padding:40px 0;`,
-  container: `width:600px;margin:0 auto;background:#1a1035;border-radius:12px;overflow:hidden;border:1px solid #2d1f5e;`,
+  container: `width:100%;max-width:600px;margin:0 auto;background:#1a1035;border-radius:12px;overflow:hidden;border:1px solid #2d1f5e;`,
   header: `background:linear-gradient(135deg,#4c1d95,#6d28d9);padding:28px 20px;text-align:center;`,
   headerTitle: `margin:0;color:#ffffff;font-size:24px;letter-spacing:1px;`,
   headerSubtitle: `margin:6px 0 0;color:#ddd6fe;font-size:13px;`,
-  body_td: `padding:36px 40px;`,
+  body_td: `padding:28px 20px;`,
   greeting: `margin:0 0 16px;color:#f1f5f9;font-size:22px;`,
   text: `color:#94a3b8;line-height:1.7;font-size:15px;margin:0 0 14px;`,
   footer_td: `padding:20px;text-align:center;font-size:12px;color:#475569;border-top:1px solid #2d1f5e;`,
@@ -29,7 +29,7 @@ export const verifyEmailTemplate = (name = "User", code = "000000") => {
 </head>
 <body style="${base.body}">
   <div style="${base.wrapper}">
-    <table width="600" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
+    <table width="100%" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
 
       <!-- Header -->
       <tr>
@@ -100,7 +100,7 @@ export const welcomeEmailTemplate = (name = "User") => {
 </head>
 <body style="${base.body}">
   <div style="${base.wrapper}">
-    <table width="600" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
+    <table width="100%" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
 
       <!-- Header -->
       <tr>
@@ -165,7 +165,7 @@ export const resetPasswordTemplate = (name = "User", resetLink = "#") => {
 </head>
 <body style="${base.body}">
   <div style="${base.wrapper}">
-    <table width="600" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
+    <table width="100%" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
 
       <!-- Header -->
       <tr>
@@ -250,7 +250,7 @@ export const passwordChangedTemplate = (name = "User") => {
 </head>
 <body style="${base.body}">
   <div style="${base.wrapper}">
-    <table width="600" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
+    <table width="100%" cellpadding="0" cellspacing="0" style="${base.container}" align="center">
 
       <!-- Header -->
       <tr>

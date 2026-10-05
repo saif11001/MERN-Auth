@@ -28,7 +28,7 @@ const EmailVerificationPage = () => {
     }, [cooldown]);
 
     const handleChange = (index, value) => {
-        if (value && !/^\d$/.test(value)) return;
+        if (value && !/^\d+$/.test(value)) return;
 
         const newCode = [...code];
 
@@ -47,6 +47,10 @@ const EmailVerificationPage = () => {
             if (value && index < 5) {
                 inputRefs.current[index + 1]?.focus();
             }
+        }
+
+        if (newCode.every((digit) => digit !== "")) {
+            submitCode(newCode.join(""));
         }
     }
 
@@ -75,7 +79,7 @@ const EmailVerificationPage = () => {
         try {
             await dispatch(verifyEmail(verificationCode)).unwrap();
             navigate("/");
-        } catch (error) {
+        } catch {
             setCode(["", "", "", "", "", ""]);
             inputRefs.current[0]?.focus();
         }
@@ -95,16 +99,8 @@ const EmailVerificationPage = () => {
             setCode(["", "", "", "", "", ""]);
             inputRefs.current[0]?.focus();
             setCooldown(60);
-        } catch (err) {}
+        } catch { /* error is shown from redux state */ }
     }
-
-    useEffect(() => {
-        if(code.every(digit => digit !== '')) {
-            const verificationCode = code.join('');
-            submitCode(verificationCode);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [code])
 
     return (
         <motion.div
@@ -129,6 +125,7 @@ const EmailVerificationPage = () => {
                             ref={(el) => (inputRefs.current[index] = el)}
                             type="text"
                             inputMode="numeric"
+                            autoComplete="one-time-code"
                             maxLength='6'
                             value={digit}
                             onChange={(e) => { handleChange(index, e.target.value) }}

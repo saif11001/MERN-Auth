@@ -44,7 +44,7 @@ const HomePage = () => {
         try {
             await dispatch(editUser(updates)).unwrap();
             setShowEditModal(false);
-        } catch (err) {}
+        } catch { /* error is shown from redux state */ }
     };
 
     const handleDelete = async () => {
@@ -52,7 +52,7 @@ const HomePage = () => {
             try {
                 await dispatch(deleteUser()).unwrap();
                 navigate("/login");
-            } catch (err) {}
+            } catch { /* error is shown from redux state */ }
         }
     };
 
@@ -157,7 +157,7 @@ const HomePage = () => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             transition={{ duration: 0.3 }}
-                            className="w-full max-w-md border border-white/10 rounded-2xl shadow-2xl p-5 sm:p-8"
+                            className="w-full max-w-md max-h-[90dvh] overflow-y-auto border border-white/10 rounded-2xl shadow-2xl p-5 sm:p-8"
                             style={{ background: 'rgba(15,20,60,0.95)' }}
                         >
                             <div className="flex justify-between items-center mb-5 sm:mb-6">
@@ -176,7 +176,7 @@ const HomePage = () => {
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-sm"
+                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-base"
                                         style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
                                     />
                                 </div>
@@ -187,7 +187,7 @@ const HomePage = () => {
                                         type="email"
                                         value={form.email}
                                         onChange={(e) => setForm({ ...form, email: e.target.value })}
-                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-sm"
+                                        className="w-full px-4 py-2 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-base"
                                         style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
                                     />
                                 </div>
@@ -202,7 +202,7 @@ const HomePage = () => {
                                             value={form.password}
                                             placeholder="••••••••"
                                             onChange={(e) => setForm({ ...form, password: e.target.value })}
-                                            className="w-full px-4 py-2 pr-10 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-sm"
+                                            className="w-full px-4 py-2 pr-10 rounded-full text-white placeholder-white/30 outline-none transition-all duration-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/50 text-base"
                                             style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
                                         />
                                         <button

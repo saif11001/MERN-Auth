@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import FloatingShape from "./components/FloatingShape";
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
@@ -14,21 +14,17 @@ import { checkAuth } from './redux/features/auth/authSlice';
 
 function App() {
   const { isAuthenticated, user, isCheckingAuth } = useSelector((state) => state.auth);
-  const [showSpinner, setShowSpinner] = useState(true);
 
   const dispatch = useDispatch();
   
   useEffect(() => {
     dispatch(checkAuth());
-    setTimeout(() => {
-      setShowSpinner(false);
-    }, 1000);
   }, [dispatch])
 
-  if(isCheckingAuth || showSpinner) {
+  if(isCheckingAuth) {
     return (
       <div
-        className="min-h-screen flex flex-col items-center justify-center"
+        className="min-h-dvh flex flex-col items-center justify-center"
         style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' }}
       >
         <div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" />
@@ -38,7 +34,7 @@ function App() {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-6 sm:py-8"
+      className="min-h-dvh flex flex-col items-center justify-center relative overflow-hidden px-4 py-6 sm:py-8"
       style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' }}
     >
       <div

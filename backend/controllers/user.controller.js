@@ -41,7 +41,7 @@ export const editUser = async (req, res, next) => {
             user.verificationTokenExpiresAt = Date.now() + 15 * 60 * 1000;
             await sendVerificationEmail({
                 email,
-                name,
+                name: user.name,
                 token: verificationToken
             });
         }

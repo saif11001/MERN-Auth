@@ -56,6 +56,7 @@ export const verifyEmail = async (req, res, next) => {
     const { code } = req.body;
     try {
         const user = await User.findOne({
+            _id: req.userId,
             verificationToken: code,
             verificationTokenExpiresAt: { $gt: Date.now() }
         })
@@ -128,7 +129,8 @@ export const forgetPassword = async (req, res, next) => {
     try {
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ success: false, message: "invalid credentials" });
+            // same response as success, so the API doesn't reveal which emails exist
+            return res.status(200).json({ success: true, message: 'If an account exists, a reset link was sent' });
         }
 
         const resetToken = crypto.randomBytes(32).toString('hex');
@@ -139,7 +141,7 @@ export const forgetPassword = async (req, res, next) => {
 
         await user.save();
 
-        const resetLink = `${process.env.CLINT_URL}/reset-password/${resetToken}`;
+        const resetLink = `${process.env.CLIENT_URL || process.env.CLINT_URL}/reset-password/${resetToken}`;
         await sendResetPasswordEmail({
             email: user.email,
             name: user.name,

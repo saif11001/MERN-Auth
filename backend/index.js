@@ -15,12 +15,14 @@ dotenv.config();
 
 
 const app = express();
+app.set('trust proxy', 2);
+const CLIENT_URL = process.env.CLIENT_URL || process.env.CLINT_URL;
 const port = process.env.PORT || 3000;
 const _dirname = path.resolve();
 
 app.use(cors({
     origin: [
-        process.env.CLINT_URL,
+        CLIENT_URL,
         "https://mern-auth-frontend-swart.vercel.app",
         "http://localhost:5173"
     ],

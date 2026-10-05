@@ -24,7 +24,9 @@ const ForgetPasswordPage = () => {
         try {
             await dispatch(forgetPassword(email)).unwrap();
             setSubmitted(true);
-        } catch (err) {}
+        } catch {
+            /* error is shown from redux state */
+        }
     }
 
     return (

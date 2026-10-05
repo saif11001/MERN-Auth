@@ -29,7 +29,9 @@ const SignUpPage = () => {
         try {
             await dispatch(signup({ name, email, password })).unwrap();
             navigate("/verify-email");
-        } catch (err) {}
+        } catch {
+            /* error is shown from redux state */
+        }
     }
 
     return (

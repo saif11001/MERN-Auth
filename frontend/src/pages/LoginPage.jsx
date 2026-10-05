@@ -25,7 +25,9 @@ const Login = () => {
         try {
             await dispatch(login({ email, password })).unwrap();
             navigate('/');
-        } catch (error) {}
+        } catch {
+            /* error is shown from redux state */
+        }
     }
 
     return (

@@ -36,7 +36,9 @@ const ResetPasswordPage = () => {
             await dispatch(resetPassword({ token, password })).unwrap();
             setSuccess(true);
             setTimeout(() => navigate("/login"), 3000);
-        } catch (err) {}
+        } catch {
+            /* error is shown from redux state */
+        }
     }
 
     return (

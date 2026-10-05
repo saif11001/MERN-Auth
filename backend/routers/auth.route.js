@@ -10,7 +10,7 @@ router.get('/check-auth', verifyToken, checkAuth);
 
 router.post('/signup', authLimiter, validateSignup, signup);
 
-router.post('/verify-email', sensitiveLimiter, validateVerifyEmail, verifyEmail);
+router.post('/verify-email', verifyToken, sensitiveLimiter, validateVerifyEmail, verifyEmail);
 
 router.post('/resend-verification', verifyToken, sensitiveLimiter, resendVerificationEmail);
 
