@@ -66,7 +66,7 @@ const HomePage = () => {
                 className='max-w-md w-full mx-auto mt-4 sm:mt-10 p-5 sm:p-8 backdrop-filter backdrop-blur-lg rounded-2xl shadow-2xl border border-white/10'
                 style={{ background: 'rgba(255,255,255,0.05)' }}
             >
-                <h2 className='text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
+                <h2 className='text-2xl sm:text-3xl font-bold mb-5 sm:mb-6 text-center bg-linear-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text'>
                     Welcome, {user?.name?.split(" ")[0]}
                 </h2>
 
@@ -161,7 +161,7 @@ const HomePage = () => {
                             style={{ background: 'rgba(15,20,60,0.95)' }}
                         >
                             <div className="flex justify-between items-center mb-5 sm:mb-6">
-                                <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+                                <h3 className="text-xl sm:text-2xl font-bold bg-linear-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
                                     Edit Profile
                                 </h3>
                                 <button onClick={() => setShowEditModal(false)} className="text-gray-400 hover:text-white transition">
