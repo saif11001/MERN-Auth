@@ -28,6 +28,13 @@ app.use(cors({
     ],
     credentials: true 
 }));
+
+// Health check for the frontend wake-up screen (kept before the rate limiter on purpose)
+app.get(["/health", "/api/v1/health"], (req, res) => {
+    res.set("Cache-Control", "no-store");
+    res.status(200).json({ ok: true });
+});
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
