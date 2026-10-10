@@ -4,11 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Loader } from "lucide-react";
 
-import { verifyEmail, resendVerification, clearError } from "../redux/features/auth/authSlice";
+import { verifyEmail, resendVerification, clearError, logout } from "../redux/features/auth/authSlice";
 
 const EmailVerificationPage = () => {
     const [code, setCode] = useState(["", "", "", "", "", ""]);
     const [cooldown, setCooldown] = useState(0);
+    const [isLoggingOut, setIsLoggingOut] = useState(false);
     const inputRefs = useRef([]);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -102,6 +103,16 @@ const EmailVerificationPage = () => {
         } catch { /* error is shown from redux state */ }
     }
 
+    // Lets the user leave this page. Once logged out, App.jsx sends them to /login.
+    const handleLogout = async () => {
+        setIsLoggingOut(true);
+        try {
+            await dispatch(logout()).unwrap();
+        } catch { /* ignore */ } finally {
+            setIsLoggingOut(false);
+        }
+    }
+
     return (
         <motion.div
             initial={{ opacity: 0, y: -50 }}
@@ -165,6 +176,17 @@ const EmailVerificationPage = () => {
                             : cooldown > 0
                                 ? `Resend code in ${cooldown}s`
                                 : "Didn't get the code? Resend"}
+                    </button>
+                </div>
+
+                <div className="text-center border-t border-white/10 pt-4">
+                    <button
+                        type="button"
+                        onClick={handleLogout}
+                        disabled={isLoggingOut}
+                        className="text-sm text-gray-400 hover:text-white hover:underline disabled:opacity-50"
+                    >
+                        {isLoggingOut ? "Logging out..." : "Wrong account? Log out"}
                     </button>
                 </div>
             </form>
